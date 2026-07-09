@@ -9,3 +9,4 @@ class CreateProdutos < ActiveRecord::Migration[8.1]
     end
   end
 end
+.schema itens_venda

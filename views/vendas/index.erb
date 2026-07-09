@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendas</title>
+</head>
+<body>
+
+<h1>Minhas Vendas</h1>
+
+<a href="/vendas/nova">
+    <button>Nova Venda</button>
+</a>
+
+<hr>
+
+<% if @vendas.empty? %>
+
+    <p>Nenhuma venda cadastrada.</p>
+
+<% else %>
+
+    <% @vendas.each do |venda| %>
+
+        <div style="border:2px solid black;padding:15px;border-radius:10px;margin-bottom:15px;">
+
+            <h2>Venda #<%= venda.id %></h2>
+
+            <p>
+                <strong>Comprador:</strong>
+                <%= venda.comprador.nome %>
+            </p>
+
+            <p>
+                <strong>Total:</strong>
+                R$ <%= ("%.2f" % venda.valor_total).tr(".", ",") %>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <%= venda.status %>
+            </p>
+
+        </div>
+
+    <% end %>
+
+<% end %>
+
+<br>
+
+<a href="/painel">
+    Voltar
+</a>
+
+</body>
+</html>

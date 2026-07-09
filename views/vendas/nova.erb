@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Venda</title>
+</head>
+<body>
+
+<h1>Nova Venda</h1>
+
+<form action="/vendas" method="POST">
+
+    <label>Comprador:</label><br>
+
+    <select name="comprador_id" required>
+
+        <% @usuarios.each do |usuario| %>
+
+            <option value="<%= usuario.id %>">
+                <%= usuario.nome %>
+            </option>
+
+        <% end %>
+
+    </select>
+
+    <br><br>
+
+    <label>Produto:</label><br>
+
+    <select name="produto_id" required>
+
+        <% @produtos.each do |produto| %>
+
+            <option value="<%= produto.id %>">
+                <%= produto.nome %> -
+                R$ <%= ("%.2f" % produto.preco).tr(".", ",") %>
+            </option>
+
+        <% end %>
+
+    </select>
+
+    <br><br>
+
+    <label>Quantidade:</label><br>
+
+    <input
+        type="number"
+        name="quantidade"
+        min="1"
+        value="1"
+        required>
+
+    <br><br>
+
+    <button type="submit">
+        Finalizar Venda
+    </button>
+
+</form>
+
+<br>
+
+<a href="/vendas">
+    Voltar
+</a>
+
+</body>
+</html>

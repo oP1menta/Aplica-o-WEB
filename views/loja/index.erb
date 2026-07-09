@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja</title>
+
+    <style>
+
+        .produto{
+            border: 2px solid black;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>Loja</h1>
+
+<hr>
+
+<% if @produtos.empty? %>
+
+    <p>Não existem produtos disponíveis.</p>
+
+<% else %>
+
+    <% @produtos.each do |produto| %>
+
+        <div class="produto">
+
+            <h2><%= produto.nome %></h2>
+
+            <p>
+                <strong>Vendedor:</strong>
+                <%= produto.vendedor.nome %>
+            </p>
+
+            <p>
+                <strong>Descrição:</strong><br>
+                <%= produto.descricao %>
+            </p>
+
+            <p>
+                <strong>Preço:</strong>
+                R$ <%= ("%.2f" % produto.preco).tr(".", ",") %>
+            </p>
+
+            <button>
+                Ver Detalhes
+            </button>
+
+        </div>
+
+    <% end %>
+
+<% end %>
+
+<br>
+
+<button onclick="window.location.href='/painel'">
+    Voltar
+</button>
+
+</body>
+</html>

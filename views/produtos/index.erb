@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+
+    <style>
+
+        .produto{
+            border: 2px solid black;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>Meus Produtos</h1>
+
+<a href="/produtos/novo">
+    Novo Produto
+</a>
+
+<hr>
+
+<% if @produtos.empty? %>
+
+    <p>Nenhum produto cadastrado.</p>
+
+<% else %>
+
+    <% @produtos.each do |produto| %>
+
+        <div class="produto">
+
+            <h2><%= produto.nome %></h2>
+
+            <p>
+                <strong>Descrição:</strong><br>
+                <%= produto.descricao %>
+            </p>
+
+            <p>
+                <strong>Preço:</strong>
+                R$ <%= ("%.2f" % produto.preco).tr(".", ",") %>
+            </p>
+
+            <p>
+                <strong>Estoque:</strong>
+                <%= produto.estoque %>
+            </p>
+
+            <hr>
+
+            <a href="/produtos/<%= produto.id %>/editar">
+                <button>Editar</button>
+            </a>
+
+            <form action="/produtos/<%= produto.id %>/excluir"
+                  method="POST"
+                  style="display:inline;">
+
+                <button type="submit">
+                    Excluir
+                </button>
+
+            </form>
+
+        </div>
+
+    <% end %>
+
+<% end %>
+
+<br>
+
+<a href="/painel">
+    Voltar
+</a>
+
+</body>
+</html>
