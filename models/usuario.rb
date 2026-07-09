@@ -3,7 +3,8 @@ require "bcrypt"
 class Usuario < ActiveRecord::Base
   include BCrypt
 
-  has_many :produtos, foreign_key: :vendedor_id, dependent: :destroy
+  has_many :produtos,
+           foreign_key: :vendedor_id
 
   has_many :compras,
            class_name: "Venda",
@@ -15,20 +16,25 @@ class Usuario < ActiveRecord::Base
 
   validates :nome, presence: true
 
-  validates :email,
+  validates :cpf, 
             presence: true,
-            uniqueness: true,
-            format: { with: URI::MailTo::EMAIL_REGEXP }
+            uniqueness: true
 
-  validates :cpf, presence: true
+  validates :email,
+          presence: true,
+          uniqueness: true,
+          format: {
+            with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/,
+            message: "Formatação de email Invalida."
+          }
 
   validates :senha_hash, presence: true
 
   def password=(senha)
-    self.senha_hash = Password.create(senha)
+    self.senha_hash = BCrypt::Password.create(senha)
   end
 
   def authenticate(senha)
-    Password.new(senha_hash) == senha
+    BCrypt::Password.new(senha_hash) == senha
   end
 end

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>RubyLoja</title>
+</head>
+<body>
+
+    <h1>RubyLoja</h1>
+
+    <hr>
+
+    <h2>Bem-vindo, <%= @usuario.nome %>!</h2>
+
+    <p>O que deseja fazer?</p>
+
+    <hr>
+
+    <button onclick="window.location.href='/produtos'">
+        Meus Produtos
+    </button>
+<br><br>
+
+
+    <button onclick="window.location.href='/loja'">
+        Loja
+    </button>
+<br><br>
+
+    <button onclick="window.location.href='/logout'">
+        Sair
+    </button>
+
+</body>
+</html>

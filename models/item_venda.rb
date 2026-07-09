@@ -1,6 +1,7 @@
 class ItemVenda < ActiveRecord::Base
-  belongs_to :venda
+  self.table_name = "itens_venda"
 
+  belongs_to :venda
   belongs_to :produto
 
   validates :quantidade,
