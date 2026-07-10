@@ -1,0 +1,60 @@
+<h1>Meu Carrinho</h1>
+
+<hr>
+<%
+total = 0
+%>
+<% if @itens.empty? %>
+
+<p>
+Seu carrinho está vazio.
+</p>
+
+<% else %>
+<% @itens.each do |item| %>
+<%
+subtotal = item[:produto].preco * item[:quantidade]
+total += subtotal
+%>
+<div class="produto">
+
+<h2>
+<%= item[:produto].nome %>
+</h2>
+
+<p>
+Preço:
+R$ <%= ("%.2f" % item[:produto].preco).tr(".", ",") %>
+</p>
+
+<p>
+Quantidade:
+<%= item[:quantidade] %>
+</p>
+
+<p>
+Subtotal:
+R$ <%= ("%.2f" % subtotal).tr(".", ",") %>
+</p>
+
+</div>
+<% end %>
+<hr>
+
+<h2>
+Total:
+R$ <%= ("%.2f" % total).tr(".", ",") %>
+</h2>
+
+<br>
+<form action="/finalizar-compra" method="POST">
+    <button type="submit">
+        Finalizar Compra
+    </button>
+</form>
+<% end %>
+<br><br>
+
+<button onclick="window.location.href='/loja'">
+Continuar Comprando
+</button>
