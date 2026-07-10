@@ -66,13 +66,24 @@ bundle exec rspec
 
 ## Estrutura do projeto
 
-```
-.
+```text
+Aplica-o-WEB/
 ├── app.rb
+├── config/
+│   └── database.yml
+├── db/
+│   ├── migrate/
+│   └── schema.rb
 ├── models/
-├── views/
 ├── public/
 ├── spec/
-├── db/
-└── README.md
+│   ├── features/
+│   ├── models/
+│   ├── requests/
+│   └── spec_helper.rb
+├── views/
+├── Gemfile
+├── Gemfile.lock
+├── README.md
+└── Rakefile
 ```
