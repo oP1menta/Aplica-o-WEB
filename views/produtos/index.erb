@@ -1,5 +1,15 @@
 <h1>Meus Produtos</h1>
 
+<% if @sucesso %>
+
+    <p style="color: green;">
+
+        <%= @sucesso %>
+
+    </p>
+
+<% end %>
+
 <a href="/produtos/novo">
     Novo Produto
 </a>
