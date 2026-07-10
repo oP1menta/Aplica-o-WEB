@@ -86,6 +86,8 @@ get "/produtos" do
 
   @produtos = Produto.where(vendedor_id: @usuario.id)
 
+  @sucesso = session.delete(:sucesso)
+  
   erb :"produtos/index"
 end
 
@@ -108,6 +110,7 @@ post "/produtos" do
   )
 
   if produto.save
+    session[:sucesso] = "Produto cadastrado com sucesso!"
     redirect "/produtos"
   else
     @produto = produto
