@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>RubyLoja</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin:40px;
+            background:#f5f5f5;
+        }
+
+        header{
+            background:#222;
+            color:white;
+            padding:15px;
+            border-radius:10px;
+        }
+
+        header a{
+            color:white;
+            text-decoration:none;
+            margin-right:15px;
+        }
+
+        main{
+            margin-top:20px;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        footer{
+            margin-top:30px;
+            text-align:center;
+            color:gray;
+        }
+
+        button{
+            padding:8px 15px;
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h2>RubyLoja</h2>
+
+    <% if session[:usuario_id] %>
+
+        <a href="/painel">Painel</a>
+
+        <a href="/produtos">Produtos</a>
+
+        <a href="/loja">Loja</a>
+
+        <a href="/carrinho">Carrinho</a>
+
+        <a href="/minhas-compras">Compras</a>
+
+        <a href="/vendas-recebidas">Vendas</a>
+
+        <a href="/perfil">Perfil</a>
+
+        <a href="/logout">Sair</a>
+
+    <% end %>
+
+</header>
+
+<main>
+
+    <%= yield %>
+
+</main>
+
+<footer>
+
+    RubyLoja - Programação Web
+
+</footer>
+
+</body>
+</html>

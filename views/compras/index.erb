@@ -1,0 +1,59 @@
+<h1>Minhas Compras</h1>
+
+<hr>
+
+<% if @compras.empty? %>
+
+    <p>Você ainda não realizou nenhuma compra.</p>
+
+<% else %>
+
+    <% @compras.each do |compra| %>
+
+        <div class="compra">
+
+            <h2>Compra #<%= compra.id %></h2>
+
+            <p>
+                <strong>Vendedor:</strong>
+                <%= compra.vendedor.nome %>
+            </p>
+
+            <p>
+                <strong>Data:</strong>
+                <%= compra.data %>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <%= compra.status %>
+            </p>
+
+            <p>
+                <strong>Total:</strong>
+                R$ <%= ("%.2f" % compra.valor_total).tr(".", ",") %>
+            </p>
+
+            <% if compra.status == "pendente" %>
+
+                <form action="/compras/<%= compra.id %>/cancelar" method="POST">
+
+                    <button type="submit">
+                        Cancelar Compra
+                    </button>
+
+                </form>
+
+            <% end %>
+
+        </div>
+
+    <% end %>
+
+<% end %>
+
+<br>
+
+<button onclick="window.location.href='/painel'">
+    Voltar
+</button>

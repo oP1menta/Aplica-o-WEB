@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Loja</title>
-
-    <style>
-
-        .produto{
-            border: 2px solid black;
-            padding: 15px;
-            margin-bottom: 15px;
-            width: 300px;
-            border-radius: 10px;
-        }
-
-    </style>
-
-</head>
-<body>
-
 <h1>Loja</h1>
+
+<button onclick="window.location.href='/carrinho'">
+    Meu Carrinho
+</button>
 
 <hr>
 
@@ -50,9 +33,11 @@
                 R$ <%= ("%.2f" % produto.preco).tr(".", ",") %>
             </p>
 
+            <a href="/produto/<%= produto.id %>">
             <button>
-                Ver Detalhes
+            Ver Detalhes
             </button>
+            </a>
 
         </div>
 
@@ -65,6 +50,3 @@
 <button onclick="window.location.href='/painel'">
     Voltar
 </button>
-
-</body>
-</html>

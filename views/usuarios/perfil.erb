@@ -1,0 +1,41 @@
+<h1>Meu Perfil</h1>
+
+<form action="/perfil" method="POST">
+
+    <label>Nome:</label><br>
+    <input
+        type="text"
+        name="nome"
+        value="<%= @usuario.nome %>"
+        required>
+
+    <br><br>
+
+    <label>Email:</label><br>
+    <input
+        type="email"
+        name="email"
+        value="<%= @usuario.email %>"
+        required>
+
+    <br><br>
+
+    <label>Telefone:</label><br>
+    <input
+        type="text"
+        name="telefone"
+        value="<%= @usuario.telefone %>">
+
+    <br><br>
+
+    <button type="submit">
+        Salvar Alterações
+    </button>
+
+</form>
+
+<br>
+
+<button onclick="window.location.href='/painel'">
+    Voltar
+</button>

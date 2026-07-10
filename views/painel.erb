@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>RubyLoja</title>
-</head>
-<body>
+<h1>Bem-vindo, <%= @usuario.nome %>!</h1>
 
-    <h1>RubyLoja</h1>
+<p>
+    Você está logado na RubyLoja.
+    Utilize o menu superior para navegar pelo sistema.
+</p>
 
-    <hr>
+<hr>
 
-    <h2>Bem-vindo, <%= @usuario.nome %>!</h2>
+<h3>Resuminho</h3>
 
-    <p>O que deseja fazer?</p>
+<p>
+    Produtos cadastrados: <%= Produto.where(vendedor_id: @usuario.id).count %>
+</p>
 
-    <hr>
+<p>
+    Compras realizadas: <%= Venda.where(comprador_id: @usuario.id).count %>
+</p>
 
-    <button onclick="window.location.href='/produtos'">
-        Meus Produtos
-    </button>
-<br><br>
-
-
-    <button onclick="window.location.href='/loja'">
-        Loja
-    </button>
-<br><br>
-
-    <button onclick="window.location.href='/logout'">
-        Sair
-    </button>
-
-</body>
-</html>
+<p>
+    Vendas recebidas: <%= Venda.where(vendedor_id: @usuario.id).count %>
+</p>
